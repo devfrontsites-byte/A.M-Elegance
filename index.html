@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A.M Elegance | Semi Joias Elegantes e Modernas</title>
+    <meta name="description"
+        content="Loja especializada em semi joias elegantes. Peças exclusivas que unem o moderno ao clássico para momentos inesquecíveis.">
+    <meta name="keywords" content="semi joias, luxo, A.M Elegance, joias modernas, acessórios femininos">
+
+    <meta property="og:title" content="A.M Elegance | Semi Joias">
+    <meta property="og:description" content="Elegância que transforma seu visual.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "JewelryStore",
+      "name": "A.M Elegance",
+      "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brasil"
+      },
+      "priceRange": "$$",
+      "telephone": "+5535998662454"
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #f3c6b9;
+            --secondary: #faeddf;
+            --accent: #d4a373;
+            --dark: #2d2d2d;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--secondary);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: var(--secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
+        }
+
+        .loader-content {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--primary);
+            border-top: 3px solid var(--dark);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(250, 237, 223, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url('https://images.unsplash.com/photo-1573408302355-4e0b7caf3ad6?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 0;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+        }
+
+        .btn:hover {
+            background: transparent;
+            border-color: var(--white);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        /* Marquee */
+        .marquee {
+            background: var(--dark);
+            color: var(--primary);
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee span {
+            padding: 0 40px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Sections General */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 20px 20px 0 var(--primary);
+        }
+
+        /* Services Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        /* Gallery/Portfolio */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* FAQ Accordion */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details {
+            background: var(--white);
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        summary::after {
+            content: '+';
+            color: var(--accent);
+        }
+
+        /* Testimonials Carousel */
+        .testimonials {
+            background: #f9f4ef;
+            overflow: hidden;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            min-width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 20px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background: var(--white);
+            font-family: inherit;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 10% 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* WhatsApp Floating */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s all ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loader">
+        <div class="loader-content"></div>
+    </div>
+
+    <nav id="navbar">
+        <a href="#" class="logo">A.M ELEGANCE</a>
+        <div class="nav-links">
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content" id="heroText">
+            <h1>Elegância em Cada Detalhe</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; font-weight: 300;">Coleções exclusivas de semi joias para
+                mulheres que não abrem mão do brilho.</p>
+            <a href="#galeria" class="btn">Conhecer Coleção</a>
+        </div>
+    </header>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            <span>Banho de Ouro 18k</span>
+            <span>Garantia de 1 Ano</span>
+            <span>Design Exclusivo</span>
+            <span>Envio para todo Brasil</span>
+            <span>Banho de Ouro 18k</span>
+            <span>Garantia de 1 Ano</span>
+            <span>Design Exclusivo</span>
+            <span>Envio para todo Brasil</span>
+        </div>
+    </div>
+
+    <section id="sobre">
+        <div class="about-grid">
+            <div class="about-img reveal">
+                <img src="./img/WhatsApp Image 2026-04-19 at 12.57.01.jpeg" alt="Sobre A.M Elegance">
+            </div>
+            <div class="about-text reveal">
+                <div class="section-title" style="text-align: left;">
+                    <h2>Nossa Essência</h2>
+                </div>
+                <p>A A.M Elegance nasceu do desejo de democratizar o luxo e a sofisticação. Especializada em semi joias
+                    de alto padrão, cada peça é selecionada para refletir a personalidade e a força da mulher moderna.
+                </p>
+                <br>
+                <p>Trabalhamos com materiais antialérgicos e tecnologia de ponta em banhos de metais nobres, garantindo
+                    durabilidade e um brilho inigualável.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" style="background: var(--white);">
+        <div class="section-title reveal">
+            <h2>Nossos Diferenciais</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <i class="fas fa-gem"></i>
+                <h3>Qualidade Premium</h3>
+                <p>Peças com acabamento de joalheria fina e pedras selecionadas.</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Garantia Total</h3>
+                <p>Certificado de garantia de 1 ano em todas as nossas peças.</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fas fa-gift"></i>
+                <h3>Embalagem Luxo</h3>
+                <p>Sua semi joia chega pronta para presentear ou se presentear.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <div class="section-title reveal">
+            <h2>Coleções</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item reveal"><img src="./img/WhatsApp Image 2026-04-19 at 12.57.24.jpeg" alt="Joia 1">
+            </div>
+            <div class="gallery-item reveal"><img src="./img/WhatsApp Image 2026-04-19 at 12.57.242.jpeg" alt="Joia 2">
+            </div>
+            <div class="gallery-item reveal"><img src="./img/WhatsApp Image 2026-04-19 at 12.57.253.jpeg" alt="Joia 3">
+            </div>
+            <div class="gallery-item reveal"><img src="./img/WhatsApp Image 2026-04-19 at 12.57.254.jpeg" alt="Joia 4">
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="section-title reveal">
+            <h2>O que dizem as clientes</h2>
+        </div>
+        <div class="faq-container">
+            <div class="testimonial-slider" id="slider">
+                <div class="testimonial-card">
+                    <p>"As peças são simplesmente divinas. O brilho parece de joia pura!"</p>
+                    <small>— Mariana Silva</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="section-title reveal">
+            <h2>Dúvidas Frequentes</h2>
+        </div>
+        <div class="faq-container">
+            <details class="reveal">
+                <summary>Quais as formas de pagamento?</summary>
+                <p>Aceitamos cartões de crédito em até 3x sem juros, PIX e dinheiro.</p>
+            </details>
+            <details class="reveal">
+                <summary>As peças escurecem?</summary>
+                <p>Nossas peças possuem banho de alta qualidade e camada de verniz protetor, evitando o escurecimento
+                    precoce com o uso correto.</p>
+            </details>
+        </div>
+    </section>
+
+
+
+    <header class="hero">
+
+        <a href="https://l.instagram.com/?u=https%3A%2F%2Fcarpesemijoias.revendedora.app%2F%3Floja%3Daminadabe.martins%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn-OHyauMvY9Dh8_kMFShfxCNStPUEk6EEQee3faqZ_NEG3NzAbytLTFScGi0_aem_u9DfU4nNzIx3maYDOtQhyw%26utm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio&e=AT5hsGwePzdZ7wokYHFumMiWXJd6IlSCGcHLww19lJNeglp7J_Gb85UMpsYL8RwWWR3sEq-d9xRhDQoacrfLldus0cQnbWyFNG1ztYMN6g" class="btn" target="_blank">Quero garantir a minha peça</a>
+
+    </header>
+
+
+    <section id="contato">
+        <div class="section-title reveal">
+            <h2>Fale Conosco</h2>
+        </div>
+        <form class="contact-form reveal" action="https://formspree.io/f/seu-id" method="POST">
+            <input type="text" name="name" placeholder="Seu Nome Completo" required>
+            <input type="email" name="email" placeholder="Seu E-mail" required>
+            <textarea name="message" rows="5" placeholder="Sua Mensagem" required></textarea>
+            <button type="submit" class="btn">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="logo" style="color: var(--primary);">A.M ELEGANCE</div>
+        <p>Semi Joias de Luxo e Acessórios</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/a.m.elegance_/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <!-- <a href="#"><i class="fab fa-facebook"></i></a> // colocar o link depois  -->
+        </div>
+        <p style="font-size: 0.8rem; opacity: 0.7;">&copy; 2026 A.M Elegance. Todos os direitos reservados.</p>
+    </footer>
+
+    <a href="https://wa.me/5535998662454" class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 800);
+
+            // Hero Animation
+            document.getElementById('heroText').style.opacity = '1';
+            document.getElementById('heroText').style.transform = 'translateY(0)';
+            document.getElementById('heroText').style.transition = '1.2s cubic-bezier(0.165, 0.84, 0.44, 1)';
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for Reveal
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Basic Lightbox functionality (Click to expand image)
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                // Aqui poderia entrar uma lógica de lightbox mais complexa
+                alert("Visualização de alta resolução em desenvolvimento, Senhor.");
+            });
+        });
+    </script>
+</body>
+
+</html>
