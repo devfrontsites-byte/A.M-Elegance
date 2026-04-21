@@ -136,6 +136,17 @@
             padding: 0 20px;
         }
 
+        .hero2 {
+            height: 30vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #f9f4ef;
+            overflow: hidden;
+
+        }
+
         .hero-content {
             max-width: 800px;
             opacity: 0;
@@ -291,6 +302,20 @@
         .gallery-item:hover img {
             transform: scale(1.1);
         }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+        }
+
 
         /* FAQ Accordion */
         .faq-container {
@@ -520,6 +545,9 @@
         </div>
     </section>
 
+    <div class="lightbox" id="lightbox"><img></div>
+
+
     <section class="testimonials">
         <div class="section-title reveal">
             <h2>O que dizem as clientes</h2>
@@ -553,21 +581,22 @@
 
 
 
-    <header class="hero">
+    <div class="hero2">
 
-        <a href="https://l.instagram.com/?u=https%3A%2F%2Fcarpesemijoias.revendedora.app%2F%3Floja%3Daminadabe.martins%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn-OHyauMvY9Dh8_kMFShfxCNStPUEk6EEQee3faqZ_NEG3NzAbytLTFScGi0_aem_u9DfU4nNzIx3maYDOtQhyw%26utm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio&e=AT5hsGwePzdZ7wokYHFumMiWXJd6IlSCGcHLww19lJNeglp7J_Gb85UMpsYL8RwWWR3sEq-d9xRhDQoacrfLldus0cQnbWyFNG1ztYMN6g" class="btn" target="_blank">Quero garantir a minha peça</a>
+        <a href="https://l.instagram.com/?u=https%3A%2F%2Fcarpesemijoias.revendedora.app%2F%3Floja%3Daminadabe.martins%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn-OHyauMvY9Dh8_kMFShfxCNStPUEk6EEQee3faqZ_NEG3NzAbytLTFScGi0_aem_u9DfU4nNzIx3maYDOtQhyw%26utm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio&e=AT5hsGwePzdZ7wokYHFumMiWXJd6IlSCGcHLww19lJNeglp7J_Gb85UMpsYL8RwWWR3sEq-d9xRhDQoacrfLldus0cQnbWyFNG1ztYMN6g"
+            class="btn" target="_blank">Quero garantir a minha peça</a>
 
-    </header>
+    </div>
 
 
     <section id="contato">
         <div class="section-title reveal">
             <h2>Fale Conosco</h2>
         </div>
-        <form class="contact-form reveal" action="https://formspree.io/f/seu-id" method="POST">
+        <form class="contact-form reveal" action="https://formspree.io/f/meevlkga" method="POST">
             <input type="text" name="name" placeholder="Seu Nome Completo" required>
             <input type="email" name="email" placeholder="Seu E-mail" required>
-            <textarea name="message" rows="5" placeholder="Sua Mensagem" required></textarea>
+            <textarea name="message" rows="5" placeholder="Mande sua Duvida" required></textarea>
             <button type="submit" class="btn">Enviar Mensagem</button>
         </form>
     </section>
@@ -577,7 +606,7 @@
         <p>Semi Joias de Luxo e Acessórios</p>
         <div class="social-links">
             <a href="https://www.instagram.com/a.m.elegance_/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <!-- <a href="#"><i class="fab fa-facebook"></i></a> // colocar o link depois  -->
+            <a href="https://www.facebook.com/share/1XYUQAoBSj/"><i class="fab fa-facebook"></i></a>
         </div>
         <p style="font-size: 0.8rem; opacity: 0.7;">&copy; 2026 A.M Elegance. Todos os direitos reservados.</p>
     </footer>
@@ -621,13 +650,21 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        const lightbox = document.getElementById('lightbox');
+        const lightImg = lightbox.querySelector('img');
+
         // Basic Lightbox functionality (Click to expand image)
         document.querySelectorAll('.gallery-item img').forEach(img => {
             img.addEventListener('click', () => {
+
+                lightbox.style.display = 'flex';
+                lightImg.src = img.src;
+
                 // Aqui poderia entrar uma lógica de lightbox mais complexa
-                alert("Visualização de alta resolução em desenvolvimento, Senhor.");
+                // alert("Visualização de alta resolução em desenvolvimento, Senhor.");
             });
         });
+        lightbox.onclick=()=>lightbox.style.display='none';
     </script>
 </body>
 
